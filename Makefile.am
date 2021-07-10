@@ -1,8 +1,8 @@
 AUTOMAKE_OPTIONS = foreign subdir-objects
 
 # Make these come from pkg-config or autoconf dependancy detection later
-COREHOST_CFLAGS = -I/usr/share/dotnet/packs/Microsoft.NETCore.App.Host.linux-x64/3.1.0/runtimes/linux-x64/native
-COREHOST_LDFLAGS = -L/usr/share/dotnet/packs/Microsoft.NETCore.App.Host.linux-x64/3.1.0/runtimes/linux-x64/native -lnethost
+COREHOST_CFLAGS = -I/usr/share/dotnet/packs/Microsoft.NETCore.App.Host.linux-x64/3.1.9/runtimes/linux-x64/native
+COREHOST_LDFLAGS = -L/usr/share/dotnet/packs/Microsoft.NETCore.App.Host.linux-x64/3.1.9/runtimes/linux-x64/native -lnethost
 
 mod_LTLIBRARIES = mod_coreclr.la
 mod_coreclr_la_SOURCES  = src/mod_coreclr.c src/swig.cpp src/ManagedSession.cpp

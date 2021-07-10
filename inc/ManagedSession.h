@@ -5,6 +5,7 @@ extern "C" {
 #include <switch.h>
 #include <switch_cpp.h>
 }
+typedef char* (*inputFunction) (char *);
 
 class ManagedSession : public CoreSession
 {

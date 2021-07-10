@@ -22,3 +22,8 @@ libtool
 mod_coreclr.la
 *.lo
 *.o
+/Loader/.vs/Loader/v16/Server/sqlite3
+/.vs/Managed/v16
+/Loader/.vs/Loader/DesignTimeBuild/.dtbcache
+*.dtbcache
+*.user

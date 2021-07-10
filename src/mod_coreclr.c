@@ -51,8 +51,8 @@
 #endif
 
 // TODO: The base path needs to come in from FS configuration, and need a Loader install concept to copy/publish it to the right location
-#define LOADER_PATH "/home/shane/mod_coreclr/LoaderRuntime/Loader.dll"
-#define LOADER_RUNTIME_CONFIG_PATH "/home/shane/mod_coreclr/LoaderRuntime/Loader.runtimeconfig.json"
+#define LOADER_PATH "/usr/lib/freeswitch/mod/dotnet/Loader.dll"
+#define LOADER_RUNTIME_CONFIG_PATH "/usr/lib/freeswitch/mod/dotnet/Loader.runtimeconfig.json"
 
 typedef const char * (*native_xml_function_t)(const char *section, const char *tag, const char *key, const char *value, switch_event_t *event);
 
@@ -198,10 +198,10 @@ SWITCH_MODULE_LOAD_FUNCTION(mod_coreclr_load)
 	}
 
 	if (native_callbacks.api_callback) {
-		SWITCH_ADD_API(api_interface, "coreclr", "Run a coreclr api", native_callbacks.api_callback, "<api> [<args>]");
+		SWITCH_ADD_API(api_interface, "dotnet", "Run a coreclr api", native_callbacks.api_callback, "<api> [<args>]");
 	}
 	if (native_callbacks.app_callback) {
-		SWITCH_ADD_APP(app_interface, "coreclr", "Run a coreclr app", "Run a coreclr application in a channel", native_callbacks.app_callback, "<app> [<args>]", SAF_SUPPORT_NOMEDIA);
+		SWITCH_ADD_APP(app_interface, "dotnet", "Run a coreclr app", "Run a coreclr application in a channel", native_callbacks.app_callback, "<app> [<args>]", SAF_SUPPORT_NOMEDIA);
 	}
 	if (native_callbacks.xml_callback) {
 		switch_xml_bind_search_function(xml_handler,

@@ -4,9 +4,9 @@
 
 ManagedSession::ManagedSession() : CoreSession() { }
 
-ManagedSession::ManagedSession(char *uuid) : CoreSession(uuid) { }
+ManagedSession::ManagedSession(char* uuid) : CoreSession(uuid) { }
 
-ManagedSession::ManagedSession(switch_core_session_t *session) : CoreSession(session) { }
+ManagedSession::ManagedSession(switch_core_session_t* session) : CoreSession(session) { }
 
 ManagedSession::~ManagedSession()
 {
@@ -37,7 +37,18 @@ void ManagedSession::check_hangup_hook()
 {
 }
 
-switch_status_t ManagedSession::run_dtmf_callback(void *input, switch_input_type_t itype)
+switch_status_t ManagedSession::run_dtmf_callback(void* input, switch_input_type_t itype)
 {
-	return SWITCH_STATUS_SUCCESS;
+		if (cb_state.function == NULL || itype != SWITCH_INPUT_TYPE_DTMF) {
+			return SWITCH_STATUS_FALSE;;
+		}
+	char* result = ((inputFunction)cb_state.function)((char*)input);
+	switch_status_t status = process_callback_result(result);
+
+	// This this need to be done for coreclr?
+	//RESULT_FREE(result);
+
+	return status;
+
+	return SWITCH_STATUS_FALSE;
 }
